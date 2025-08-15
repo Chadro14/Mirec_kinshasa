@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     container.style.opacity = '1';
 
     // Ajoute une animation au clic du bouton "Commencer"
-    const startButton = document.querySelector('.start-button');
+    const startButton = document.getElementById('startButton');
     startButton.addEventListener('click', function(event) {
         event.preventDefault();
         
@@ -14,8 +14,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // Retire la classe après l'animation pour pouvoir la relancer
         setTimeout(() => {
             startButton.classList.remove('pop');
-            // Optionnel : rediriger l'utilisateur après l'animation
-            // window.location.href = 'nom_de_votre_prochaine_page.html';
+            // Vous pouvez ajouter une redirection ici si besoin
+            // Exemple : window.location.href = 'nom_de_votre_prochaine_page.html';
         }, 500); // 500ms, la durée de l'animation CSS
     });
 });
