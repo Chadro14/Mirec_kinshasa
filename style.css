@@ -20,6 +20,8 @@ body {
     backdrop-filter: blur(10px);
     max-width: 80%;
     margin: 20px;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
 }
 
 h1 {
@@ -57,85 +59,6 @@ h1 {
     box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
 }
 
-.logo-container {
-    margin-bottom: 30px;
-}
-
-.logo-container img {
-    max-width: 200px;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
-    animation: pulseLogo 2s infinite alternate;
-}
-
-@keyframes pulseLogo {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.05); }
-}
-/* Styles généraux pour la page */
-body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #64CCC5, #176B87);
-    color: #fff;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    text-align: center;
-}
-
-.container {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    padding: 40px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(10px);
-    max-width: 80%;
-    margin: 20px;
-    opacity: 0; /* Ajouté pour l'animation de fondu */
-    transition: opacity 1s ease-in-out; /* Ajouté pour l'animation de fondu */
-}
-
-h1 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-    color: #fff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.description {
-    font-size: 1.2em;
-    line-height: 1.6;
-    margin-bottom: 30px;
-    color: #eee;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
-}
-
-.start-button {
-    display: inline-block;
-    background-color: #fff;
-    color: #176B87;
-    padding: 15px 40px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.1em;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease-in-out;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-}
-
-.start-button:hover {
-    background-color: #64CCC5;
-    color: #fff;
-    transform: scale(1.05);
-    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
-}
-
-/* Animation "pop" au clic */
 .start-button.pop {
     animation: popEffect 0.5s forwards;
 }
@@ -155,23 +78,8 @@ h1 {
     height: auto;
     border-radius: 10px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
-    animation: pulseLogo 2s infinite alternate;
-}
-
-@keyframes pulseLogo {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.05); }
-}
-/* ... vos styles existants ici ... */
-
-/* Animation pour les mains du logo principal */
-.logo-container img {
-    max-width: 200px;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
     animation: shakeHandsContinuously 2s infinite alternate, pulseLogo 2s infinite alternate;
-    transform-origin: bottom center; /* Point de rotation pour l'animation */
+    transform-origin: bottom center;
 }
 
 @keyframes shakeHandsContinuously {
@@ -186,5 +94,3 @@ h1 {
     0% { transform: scale(1); }
     100% { transform: scale(1.05); }
 }
-
-/* ... le reste de votre code CSS ... */
