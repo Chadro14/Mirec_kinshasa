@@ -9,12 +9,12 @@
 <body>
 
     <div class="logo-container">
-        <img src="1001104783.jpg" alt="Logo MIREC" class="hand-shake-animation">
+        <img src="https://files.catbox.moe/8rwoh6.jpg" alt="logo MIREC" class="hand-shake-animation">
     </div>
 
     <p class="description">Ministère International de la Réconciliation par le Christ</p>
 
-    <a href="#" class="start-button" onclick="showLoading()">
+    <a href="#" class="start-button" id="startButton">
         <img src="https://files.catbox.moe/8rwoh6.jpg" alt="Bouton Commencer">
     </a>
 
@@ -22,14 +22,7 @@
         <img src="https://files.catbox.moe/8rwoh6.jpg" alt="Chargement" class="loading-image">
     </div>
 
-    <script>
-        function showLoading() {
-            document.getElementById('loadingOverlay').style.display = 'flex';
-            setTimeout(function(){
-                document.getElementById('loadingOverlay').style.display = 'none';
-            }, 3000);
-        }
-    </script>
+    <script src="script.js"></script>
 
 </body>
 </html>
