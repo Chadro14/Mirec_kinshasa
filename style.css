@@ -1,0 +1,88 @@
+/* Styles généraux pour la page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+}
+
+.logo-container {
+    margin-bottom: 30px;
+}
+
+.logo-container img {
+    max-width: 300px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.description {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    padding: 0 20px;
+}
+
+.start-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.3s ease;
+}
+
+.start-button img {
+    width: 200px; /* Taille du bouton */
+    height: auto;
+    border-radius: 5px;
+}
+
+.start-button:hover {
+    transform: scale(1.05);
+}
+
+/* Styles et animation pour le chargement */
+.loading-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.loading-image {
+    width: 150px;
+    height: auto;
+    animation: pulse 1.5s infinite alternate; /* Animation de pulsation */
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(1.1); opacity: 0.8; }
+}
+
+/* Animation pour les mains du logo principal */
+@keyframes shakeHands {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(1deg); }
+    50% { transform: rotate(-1deg); }
+    75% { transform: rotate(1deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.hand-shake-animation {
+    animation: shakeHands 1s infinite alternate;
+}
