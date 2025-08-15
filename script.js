@@ -3,19 +3,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const container = document.querySelector('.container');
     container.style.opacity = '1';
 
-    // Ajoute une animation au clic du bouton "Commencer"
+    // Gère le clic du bouton "Commencer"
     const startButton = document.getElementById('startButton');
     startButton.addEventListener('click', function(event) {
-        event.preventDefault();
-        
-        // Ajoute la classe d'animation "pop"
-        startButton.classList.add('pop');
+        event.preventDefault(); // Empêche la redirection immédiate
 
-        // Retire la classe après l'animation pour pouvoir la relancer
-        setTimeout(() => {
-            startButton.classList.remove('pop');
-            // Vous pouvez ajouter une redirection ici si besoin
-            // Exemple : window.location.href = 'nom_de_votre_prochaine_page.html';
-        }, 500); // 500ms, la durée de l'animation CSS
+        // Affiche l'écran de chargement
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        loadingOverlay.style.display = 'flex';
+
+        // Redirige vers la page dashboard.html après 3 secondes
+        setTimeout(function() {
+            window.location.href = 'dashboard.html';
+        }, 3000);
     });
 });
