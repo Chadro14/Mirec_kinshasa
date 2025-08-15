@@ -162,3 +162,29 @@ h1 {
     0% { transform: scale(1); }
     100% { transform: scale(1.05); }
 }
+/* ... vos styles existants ici ... */
+
+/* Animation pour les mains du logo principal */
+.logo-container img {
+    max-width: 200px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+    animation: shakeHandsContinuously 2s infinite alternate, pulseLogo 2s infinite alternate;
+    transform-origin: bottom center; /* Point de rotation pour l'animation */
+}
+
+@keyframes shakeHandsContinuously {
+    0% { transform: scale(1) rotate(0deg); }
+    25% { transform: scale(1) rotate(2deg); }
+    50% { transform: scale(1) rotate(-2deg); }
+    75% { transform: scale(1) rotate(2deg); }
+    100% { transform: scale(1) rotate(0deg); }
+}
+
+@keyframes pulseLogo {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05); }
+}
+
+/* ... le reste de votre code CSS ... */
