@@ -1,8 +1,8 @@
 /* Styles généraux du corps de la page */
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #64CCC5, #176B87);
-    color: #fff;
+    background-color: #121212;
+    color: #f0f0f0;
     margin: 0;
     padding: 0;
     display: flex;
@@ -11,52 +11,75 @@ body {
     justify-content: center;
     min-height: 100vh;
     text-align: center;
+    transition: background-color 0.5s ease;
 }
 
 /* Styles du conteneur principal */
 .container {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(30, 30, 30, 0.8);
     border-radius: 10px;
     padding: 40px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(10px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(15px);
     max-width: 80%;
     margin: 20px;
+    opacity: 0;
+    transition: opacity 1s ease-in-out, transform 0.5s ease;
+}
+
+.container.loaded {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 h1 {
     font-size: 2.5em;
     margin-bottom: 20px;
     color: #fff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
+/* Style de la description en mouvement */
 .description {
+    font-family: 'Georgia', serif;
     font-size: 1.2em;
     line-height: 1.6;
     margin-bottom: 30px;
-    color: #eee;
+    color: #ccc;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInMove 2s forwards;
+    animation-delay: 1s;
 }
 
-.start-button {
+@keyframes fadeInMove {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Style des boutons et liens */
+.start-button, .back-button, .nav-button {
     display: inline-block;
-    background-color: #fff;
-    color: #176B87;
+    background: #444;
+    color: #fff;
     padding: 15px 40px;
-    border-radius: 8px;
+    border-radius: 5px;
     text-decoration: none;
     font-weight: bold;
     font-size: 1.1em;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease-in-out;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border: 1px solid #555;
+    letter-spacing: 1px;
 }
 
-.start-button:hover {
-    background-color: #64CCC5;
-    color: #fff;
-    transform: scale(1.05);
-    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
+.start-button:hover, .back-button:hover, .nav-button:hover {
+    background: #555;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
 }
 
 .logo-container {
@@ -66,23 +89,13 @@ h1 {
 .logo-container img {
     max-width: 200px;
     height: auto;
-    border-radius: 10px;
+    border-radius: 50%; /* Image ronde */
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
-    animation: shakeHandsContinuously 2s infinite alternate, pulseLogo 2s infinite alternate;
-    transform-origin: bottom center;
+    transition: transform 0.5s ease-in-out;
 }
 
-@keyframes shakeHandsContinuously {
-    0% { transform: scale(1) rotate(0deg); }
-    25% { transform: scale(1) rotate(2deg); }
-    50% { transform: scale(1) rotate(-2deg); }
-    75% { transform: scale(1) rotate(2deg); }
-    100% { transform: scale(1) rotate(0deg); }
-}
-
-@keyframes pulseLogo {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.05); }
+.logo-container img:hover {
+    transform: scale(1.1) rotate(5deg);
 }
 
 /* Styles pour l'écran de chargement */
@@ -93,22 +106,28 @@ h1 {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(18, 18, 18, 0.95);
     z-index: 1000;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     color: white;
     font-size: 1.5em;
+    animation: pulseGlow 2s infinite alternate;
+}
+
+@keyframes pulseGlow {
+    from { text-shadow: 0 0 5px #fff; }
+    to { text-shadow: 0 0 15px #fff, 0 0 20px #fff; }
 }
 
 .loading-spinner {
-    border: 8px solid #f3f3f3;
-    border-top: 8px solid #3498db;
+    border: 8px solid #333;
+    border-top: 8px solid #fff;
     border-radius: 50%;
     width: 60px;
     height: 60px;
-    animation: spin 2s linear infinite;
+    animation: spin 1s linear infinite;
     margin-bottom: 15px;
 }
 
@@ -122,10 +141,10 @@ footer {
     position: fixed;
     bottom: 10px;
     font-size: 0.8em;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.4);
 }
 
-/* --- NOUVEAUX STYLES POUR LE MENU LATÉRAL --- */
+/* NOUVEAUX STYLES POUR LE MENU LATÉRAL */
 
 .main-content {
     position: relative;
@@ -133,7 +152,6 @@ footer {
     transition: transform 0.3s ease-in-out;
 }
 
-/* Style de l'icône du menu hamburger */
 .hamburger-menu {
     position: fixed;
     top: 20px;
@@ -141,13 +159,13 @@ footer {
     z-index: 10;
     cursor: pointer;
     padding: 10px;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 5px;
     transition: background 0.3s ease;
 }
 
 .hamburger-menu:hover {
-    background: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .hamburger-menu .bar {
@@ -158,7 +176,6 @@ footer {
     transition: 0.4s;
 }
 
-/* Animation de l'icône */
 .hamburger-menu.active .bar:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
 }
@@ -171,7 +188,6 @@ footer {
     transform: translateY(-8px) rotate(-45deg);
 }
 
-/* Style du menu latéral */
 .sidebar {
     height: 100%;
     width: 0;
@@ -179,7 +195,7 @@ footer {
     z-index: 5;
     top: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.9);
     backdrop-filter: blur(5px);
     overflow-x: hidden;
     transition: 0.5s;
@@ -193,7 +209,6 @@ footer {
     width: 250px;
 }
 
-/* Style des boutons dans le menu */
 .nav-button {
     padding: 15px 25px;
     text-decoration: none;
@@ -207,7 +222,7 @@ footer {
 }
 
 .nav-button:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: #222;
 }
 
 .nav-button .button-icon {
@@ -215,7 +230,6 @@ footer {
     margin-right: 15px;
 }
 
-/* Règle pour les écrans plus petits */
 @media screen and (max-width: 768px) {
     .sidebar.active {
         width: 100%;
