@@ -22,14 +22,19 @@
 
     <div class="main-content">
         <div class="container loaded">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="logo.png" alt="Logo de Mirec Kinshasa">
+                </a>
+            </div>
             <h1>Tableau de bord</h1>
             <p id="citation" class="description"></p>
             
             <div class="button-section">
-                <a href="#" class="dashboard-button">🗣️ Prédication</a>
-                <a href="#" class="dashboard-button">🧘 Méditation</a>
-                <a href="#" class="dashboard-button">📖 Versé du jour</a>
-                <a href="#" class="dashboard-button">✝️ Bible</a>
+                <a href="predication.html" class="dashboard-button">🗣️ Prédication</a>
+                <a href="meditation.html" class="dashboard-button">🧘 Méditation</a>
+                <a href="verse.html" class="dashboard-button">📖 Versé du jour</a>
+                <a href="bible.html" class="dashboard-button">✝️ Bible</a>
             </div>
 
             <div class="mood-section">
@@ -82,7 +87,7 @@
 
         // Code pour le bouton "Comment vous sentez-vous ?"
         document.getElementById('toggleMoodButton').addEventListener('click', function(event) {
-            event.preventDefault(); // Empêche le lien de recharger la page
+            event.preventDefault();
             const moodContent = document.getElementById('moodContent');
             moodContent.classList.toggle('mood-content-hidden');
             moodContent.classList.toggle('mood-content-visible');
