@@ -1,67 +1,15 @@
-/* Styles généraux du corps de la page */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #000000; /* Fond noir pur */
-    color: #DAA520; /* Texte principal en doré plus doux */
-    margin: 0;
-    padding: 0;
+/* NOUVEAUX STYLES POUR LES BOUTONS DU TABLEAU DE BORD */
+.button-section {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    text-align: center;
-    transition: background-color 0.5s ease;
-}
-
-/* Styles du conteneur principal */
-.container {
-    background-color: rgba(0, 0, 0, 0.8);
-    border-radius: 10px;
-    padding: 40px;
-    box-shadow: 0 5px 20px rgba(218, 165, 32, 0.2);
-    backdrop-filter: blur(15px);
-    max-width: 80%;
-    margin: 20px;
-    opacity: 0;
-    transition: opacity 1s ease-in-out, transform 0.5s ease;
-    border: 1px solid #F0E68C; /* Bordure en jaune pâle pour correspondre à la description */
-}
-
-.container.loaded {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-h1 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-    color: #F0E68C; /* Titre en jaune pâle, la même couleur que la description */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-}
-
-/* Style de la description en mouvement */
-.description {
-    font-family: 'Georgia', serif;
-    font-size: 1.2em;
-    line-height: 1.6;
+    gap: 15px;
     margin-bottom: 30px;
-    color: #F0E68C; /* Description en jaune pâle */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
-    opacity: 1;
-    animation: moveDescription 4s infinite alternate; /* Animation de mouvement */
 }
 
-@keyframes moveDescription {
-    0% { transform: translateX(-10px); }
-    100% { transform: translateX(10px); }
-}
-
-/* Style des boutons et liens */
-.start-button, .back-button, .nav-button, .service-button {
-    display: inline-block;
+.dashboard-button {
+    display: block;
     background: #1a1a1a;
-    color: #F0E68C; /* Boutons en jaune pâle */
+    color: #F0E68C;
     padding: 15px 40px;
     border-radius: 5px;
     text-decoration: none;
@@ -69,166 +17,56 @@ h1 {
     font-size: 1.1em;
     transition: background-color 0.3s ease, transform 0.2s ease-in-out, box-shadow 0.3s ease;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    border: 1px solid #F0E68C; /* Bordure des boutons en jaune pâle */
+    border: 1px solid #F0E68C;
     letter-spacing: 1px;
 }
 
-.start-button:hover, .back-button:hover, .nav-button:hover, .service-button:hover {
+.dashboard-button:hover {
     background: #333;
     transform: translateY(-3px);
     box-shadow: 0 8px 15px rgba(240, 230, 140, 0.3);
 }
 
-.logo-container {
-    margin-bottom: 30px;
+/* STYLES POUR LA SECTION HUMEUR */
+.mood-section {
+    margin-top: 20px;
 }
 
-.logo-container img {
-    max-width: 200px;
-    height: auto;
-    border-radius: 50%; /* Image ronde */
-    box-shadow: 0 3px 10px rgba(218, 165, 32, 0.4);
-    transition: transform 0.5s ease-in-out;
-}
-
-.logo-container img:hover {
-    transform: scale(1.1) rotate(5deg);
-}
-
-/* Styles pour l'écran de chargement */
-.loading-overlay {
+.mood-content-hidden {
     display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.95);
-    z-index: 1000;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: #F0E68C;
-    font-size: 1.5em;
-    animation: pulseGlow 2s infinite alternate;
+    padding: 20px;
+    border: 1px solid #F0E68C;
+    border-radius: 10px;
+    margin-top: 15px;
 }
 
-@keyframes pulseGlow {
-    from { text-shadow: 0 0 5px #F0E68C; }
-    to { text-shadow: 0 0 15px #F0E68C, 0 0 20px #F0E68C; }
-}
-
-.loading-spinner {
-    border: 8px solid #333;
-    border-top: 8px solid #F0E68C;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    animation: spin 1s linear infinite;
-    margin-bottom: 15px;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* Styles pour le footer */
-footer {
-    position: fixed;
-    bottom: 10px;
-    font-size: 0.8em;
-    color: #F0E68C; /* Signature en jaune pâle */
-}
-
-/* NOUVEAUX STYLES POUR LE MENU LATÉRAL */
-.main-content {
-    position: relative;
-    z-index: 1;
-    transition: transform 0.3s ease-in-out;
-}
-
-.hamburger-menu {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 10;
-    cursor: pointer;
-    padding: 10px;
-    background: rgba(240, 230, 140, 0.1);
-    border-radius: 5px;
-    transition: background 0.3s ease;
-}
-
-.hamburger-menu:hover {
-    background: rgba(240, 230, 140, 0.2);
-}
-
-.hamburger-menu .bar {
-    width: 25px;
-    height: 3px;
-    background-color: #F0E68C;
-    margin: 5px 0;
-    transition: 0.4s;
-}
-
-.hamburger-menu.active .bar:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-}
-
-.hamburger-menu.active .bar:nth-child(2) {
-    opacity: 0;
-}
-
-.hamburger-menu.active .bar:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-}
-
-.sidebar {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 5;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.9);
-    backdrop-filter: blur(5px);
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-    box-shadow: 2px 0 10px rgba(240, 230, 140, 0.5);
-    display: flex;
-    flex-direction: column;
-}
-
-.sidebar.active {
-    width: 250px;
-}
-
-.nav-button {
-    padding: 15px 25px;
-    text-decoration: none;
-    font-size: 1.2em;
-    color: #F0E68C;
+.mood-content-visible {
     display: block;
-    transition: 0.3s;
-    text-align: left;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.mood-options {
     display: flex;
-    align-items: center;
+    justify-content: center;
+    gap: 15px;
 }
 
-.nav-button:hover {
-    background-color: #111;
+.mood-item {
+    cursor: pointer;
+    padding: 10px 20px;
+    border: 1px solid #DAA520;
+    border-radius: 20px;
+    background-color: #1a1a1a;
+    color: #DAA520;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
-.nav-button .button-icon {
-    font-size: 1.5em;
-    margin-right: 15px;
-    color: #F0E68C;
+.mood-item:hover {
+    background-color: #333;
+    transform: translateY(-2px);
 }
 
-@media screen and (max-width: 768px) {
-    .sidebar.active {
-        width: 100%;
-    }
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
