@@ -2,7 +2,7 @@
 body {
     font-family: 'Arial', sans-serif;
     background-color: #000000; /* Fond noir pur */
-    color: #FFD700; /* Texte principal en doré */
+    color: #DAA520; /* Texte principal en doré plus doux */
     margin: 0;
     padding: 0;
     display: flex;
@@ -19,13 +19,13 @@ body {
     background-color: rgba(0, 0, 0, 0.8);
     border-radius: 10px;
     padding: 40px;
-    box-shadow: 0 5px 20px rgba(255, 215, 0, 0.2);
+    box-shadow: 0 5px 20px rgba(218, 165, 32, 0.2);
     backdrop-filter: blur(15px);
     max-width: 80%;
     margin: 20px;
     opacity: 0;
     transition: opacity 1s ease-in-out, transform 0.5s ease;
-    border: 1px solid #FFD700; /* Bordure dorée */
+    border: 1px solid #DAA520; /* Bordure dorée plus douce */
 }
 
 .container.loaded {
@@ -36,7 +36,7 @@ body {
 h1 {
     font-size: 2.5em;
     margin-bottom: 20px;
-    color: #FFD700; /* Titre en doré */
+    color: #DAA520; /* Titre en doré plus doux */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
@@ -46,7 +46,7 @@ h1 {
     font-size: 1.2em;
     line-height: 1.6;
     margin-bottom: 30px;
-    color: #F0E68C; /* Description en jaune pâle */
+    color: #F0E68C; /* Description en jaune pâle (inchangée pour un effet de contraste) */
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
     opacity: 0;
     transform: translateY(20px);
@@ -65,7 +65,7 @@ h1 {
 .start-button, .back-button, .nav-button, .service-button {
     display: inline-block;
     background: #1a1a1a;
-    color: #FFD700;
+    color: #DAA520;
     padding: 15px 40px;
     border-radius: 5px;
     text-decoration: none;
@@ -73,14 +73,14 @@ h1 {
     font-size: 1.1em;
     transition: background-color 0.3s ease, transform 0.2s ease-in-out, box-shadow 0.3s ease;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    border: 1px solid #FFD700; /* Bordure dorée */
+    border: 1px solid #DAA520; /* Bordure dorée plus douce */
     letter-spacing: 1px;
 }
 
 .start-button:hover, .back-button:hover, .nav-button:hover, .service-button:hover {
     background: #333;
     transform: translateY(-3px);
-    box-shadow: 0 8px 15px rgba(255, 215, 0, 0.3);
+    box-shadow: 0 8px 15px rgba(218, 165, 32, 0.3);
 }
 
 .logo-container {
@@ -91,7 +91,7 @@ h1 {
     max-width: 200px;
     height: auto;
     border-radius: 50%;
-    box-shadow: 0 3px 10px rgba(255, 215, 0, 0.4);
+    box-shadow: 0 3px 10px rgba(218, 165, 32, 0.4);
     transition: transform 0.5s ease-in-out;
 }
 
@@ -112,19 +112,19 @@ h1 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: #FFD700;
+    color: #DAA520;
     font-size: 1.5em;
     animation: pulseGlow 2s infinite alternate;
 }
 
 @keyframes pulseGlow {
-    from { text-shadow: 0 0 5px #FFD700; }
-    to { text-shadow: 0 0 15px #FFD700, 0 0 20px #FFD700; }
+    from { text-shadow: 0 0 5px #DAA520; }
+    to { text-shadow: 0 0 15px #DAA520, 0 0 20px #DAA520; }
 }
 
 .loading-spinner {
     border: 8px solid #333;
-    border-top: 8px solid #FFD700;
+    border-top: 8px solid #DAA520;
     border-radius: 50%;
     width: 60px;
     height: 60px;
@@ -142,7 +142,7 @@ footer {
     position: fixed;
     bottom: 10px;
     font-size: 0.8em;
-    color: rgba(255, 215, 0, 0.4);
+    color: rgba(218, 165, 32, 0.4);
 }
 
 /* NOUVEAUX STYLES POUR LE MENU LATÉRAL */
@@ -159,19 +159,19 @@ footer {
     z-index: 10;
     cursor: pointer;
     padding: 10px;
-    background: rgba(255, 215, 0, 0.1);
+    background: rgba(218, 165, 32, 0.1);
     border-radius: 5px;
     transition: background 0.3s ease;
 }
 
 .hamburger-menu:hover {
-    background: rgba(255, 215, 0, 0.2);
+    background: rgba(218, 165, 32, 0.2);
 }
 
 .hamburger-menu .bar {
     width: 25px;
     height: 3px;
-    background-color: #FFD700;
+    background-color: #DAA520;
     margin: 5px 0;
     transition: 0.4s;
 }
@@ -200,7 +200,7 @@ footer {
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
-    box-shadow: 2px 0 10px rgba(255, 215, 0, 0.5);
+    box-shadow: 2px 0 10px rgba(218, 165, 32, 0.5);
     display: flex;
     flex-direction: column;
 }
@@ -213,7 +213,7 @@ footer {
     padding: 15px 25px;
     text-decoration: none;
     font-size: 1.2em;
-    color: #FFD700;
+    color: #DAA520;
     display: block;
     transition: 0.3s;
     text-align: left;
@@ -228,7 +228,7 @@ footer {
 .nav-button .button-icon {
     font-size: 1.5em;
     margin-right: 15px;
-    color: #FFD700;
+    color: #DAA520;
 }
 
 @media screen and (max-width: 768px) {
