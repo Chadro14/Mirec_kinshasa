@@ -3,65 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services Mirec</title>
+    <title>Tableau de bord - Mirec</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-
-    <div id="hamburgerMenu" class="hamburger-menu">
+    <div id="hamburger" class="hamburger-menu">
         <div class="bar"></div>
         <div class="bar"></div>
         <div class="bar"></div>
     </div>
 
-    <nav id="sidebar" class="sidebar">
-        <a href="bible.html" class="nav-button">
-            <span class="button-icon">📖</span>
-            <span>Bouton Bible</span>
-        </a>
-        <a href="#" class="nav-button">
-            <span class="button-icon">🧘‍♂️</span>
-            <span>Méditation</span>
-        </a>
-        <a href="#" class="nav-button">
-            <span class="button-icon">✍️</span>
-            <span>Citation Chrétienne</span>
-        </a>
-        <a href="#" class="nav-button">
-            <span class="button-icon">😊</span>
-            <span>Comment vous sentez-vous aujourd'hui ?</span>
-        </a>
-        <a href="preaching.html" class="nav-button">
-            <span class="button-icon">🗣️</span>
-            <span>Prédication</span>
-        </a>
-        <a href="requests.html" class="nav-button">
-            <span class="button-icon">🙏</span>
-            <span>Envoyez vos requêtes</span>
-        </a>
-        <a href="admin.html" class="nav-button">
-            <span class="button-icon">🛠️</span>
-            <span>Admin</span>
-        </a>
-    </nav>
-
-    <a href="https://wa.me/243822506535" class="nav-button">Discuter avec le berger Christian Mpiana</a>
-
- <a href="https://wa.me/243980000118" class="nav-button">Discuter avec le berger Michée danchel</a>
-    
-    <div class="container main-content">
-        <h1>Bienvenue, que la grâce soit avec vous !</h1>
+    <div id="sidebar" class="sidebar">
+        <a href="index.html" class="sidebar-link">Retour à la page d'accueil</a>
+        <a href="https://wa.me/243822506535" class="sidebar-link">Discuter avec le berger Christian Mpiana</a>
+        <a href="https://wa.me/243980000118" class="sidebar-link">Discuter avec le berger Michée Dachel</a>
     </div>
+
+    <div class="main-content">
+        <div class="container loaded">
+            <h1>Tableau de bord</h1>
+            <p id="citation" class="description"></p>
+            <br>
+            <a href="index.html" class="start-button">Retour à la page d'accueil</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>by Son Altesse</p>
+    </footer>
 
     <script>
-        const hamburgerMenu = document.getElementById('hamburgerMenu');
-        const sidebar = document.getElementById('sidebar');
+        // Citations qui changent
+        const citations = [
+            "Le véritable amour est un choix, pas seulement un sentiment.",
+            "La foi n'est pas l'absence de doute, c'est le courage d'y faire face.",
+            "Soyez le changement que vous voulez voir dans le monde.",
+            "Chaque pas dans la foi est un pas de plus vers la bénédiction.",
+            "La persévérance est la clé de la réussite dans toutes les épreuves."
+        ];
 
-        hamburgerMenu.addEventListener('click', () => {
-            sidebar.classList.toggle('active');
-            hamburgerMenu.classList.toggle('active');
+        const citationElement = document.getElementById('citation');
+        let index = 0;
+
+        function afficherCitation() {
+            citationElement.textContent = citations[index];
+            index = (index + 1) % citations.length;
+        }
+
+        // Afficher la première citation immédiatement
+        afficherCitation();
+
+        // Changer de citation toutes les 5 secondes
+        setInterval(afficherCitation, 5000);
+
+        // Code pour le menu hamburger
+        document.getElementById('hamburger').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('active');
+            this.classList.toggle('active');
         });
     </script>
-
 </body>
 </html>
