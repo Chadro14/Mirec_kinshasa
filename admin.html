@@ -88,6 +88,23 @@
             color: #fff;
             display: none;
         }
+
+        .back-button {
+            display: inline-block;
+            background-color: #fff;
+            color: #176B87;
+            padding: 10px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+            margin-top: 20px;
+        }
+
+        .back-button:hover {
+            background-color: #eee;
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body>
@@ -106,7 +123,9 @@
         <p id="confirmationMessage">Prédication enregistrée ! Vous pouvez maintenant la voir sur la page publique.</p>
     </div>
 
-    <p id="accessDenied">Accès refusé. Le code est incorrect.</p>
+    <p id="accessDenied" style="display:none;">Accès refusé. Le code est incorrect.</p>
+
+    <a href="dashboard.html" class="back-button">Retour au tableau de bord</a>
 
     <script>
         const correctCode = '252006';
@@ -114,8 +133,10 @@
 
         if (userCode === correctCode) {
             document.getElementById('adminContent').style.display = 'block';
+            document.getElementById('accessDenied').style.display = 'none';
         } else {
             document.getElementById('accessDenied').style.display = 'block';
+            document.getElementById('adminContent').style.display = 'none';
         }
 
         document.getElementById('sermonForm').addEventListener('submit', function(event) {
