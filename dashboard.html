@@ -16,6 +16,11 @@
 
     <div id="sidebar" class="sidebar">
         <a href="index.html" class="sidebar-link">Retour à la page d'accueil</a>
+        
+        <a href="#" class="sidebar-link">Prédication</a>
+        <a href="#" class="sidebar-link">Méditation</a>
+        <a href="#" class="sidebar-link">Versé du jour</a>
+        <a href="#" class="sidebar-link">Bible</a>
         <a href="https://wa.me/243822506535" class="sidebar-link">Discuter avec le berger Christian Mpiana</a>
         <a href="https://wa.me/243980000118" class="sidebar-link">Discuter avec le berger Michée Dachel</a>
     </div>
@@ -24,6 +29,16 @@
         <div class="container loaded">
             <h1>Tableau de bord</h1>
             <p id="citation" class="description"></p>
+            
+            <div class="mood-section">
+                <h2>Comment vous sentez-vous ?</h2>
+                <div class="mood-options">
+                    <div class="mood-item">😊 Joyeux</div>
+                    <div class="mood-item">😐 Neutre</div>
+                    <div class="mood-item">😔 Triste</div>
+                </div>
+            </div>
+
             <br>
             <a href="index.html" class="start-button">Retour à la page d'accueil</a>
         </div>
@@ -51,10 +66,7 @@
             index = (index + 1) % citations.length;
         }
 
-        // Afficher la première citation immédiatement
         afficherCitation();
-
-        // Changer de citation toutes les 5 secondes
         setInterval(afficherCitation, 5000);
 
         // Code pour le menu hamburger
