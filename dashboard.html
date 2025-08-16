@@ -35,6 +35,7 @@
                 <a href="meditation.html" class="dashboard-button">🧘 Méditation</a>
                 <a href="verse.html" class="dashboard-button">📖 Versé du jour</a>
                 <a href="bible.html" class="dashboard-button">✝️ Bible</a>
+                <a href="#" id="adminButton" class="dashboard-button">⚙️ Admin</a>
             </div>
 
             <div class="mood-section">
@@ -91,6 +92,17 @@
             const moodContent = document.getElementById('moodContent');
             moodContent.classList.toggle('mood-content-hidden');
             moodContent.classList.toggle('mood-content-visible');
+        });
+
+        // Code pour le bouton Admin
+        document.getElementById('adminButton').addEventListener('click', function(event) {
+            event.preventDefault();
+            const code = prompt("Veuillez entrer le code d'accès :");
+            if (code === "252006") {
+                window.location.href = "admin.html";
+            } else {
+                alert("Code incorrect.");
+            }
         });
     </script>
 </body>
