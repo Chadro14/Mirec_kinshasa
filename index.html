@@ -3,30 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mirec - Ministère International de la Réconciliation par le Christ</title>
+    <title>Mirec Kinshasa</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
 
-    <div class="container">
-        <div class="logo-container">
-            <img src="https://files.catbox.moe/8rwoh6.jpg" alt="Logo MIREC">
-        </div>
-        <h1>Mirec Kinshasa</h1>
-        <p class="description">Ministère international de la réconciliation évangélique par le Christ</p>
-        <a href="#" class="start-button" id="startButton">Commencer</a>
+    <div id="hamburger" class="hamburger-menu">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
     </div>
 
-    <div id="loadingOverlay" class="loading-overlay">
-        <div class="loading-spinner"></div>
-        <p>Chargement...</p>
+    <div id="sidebar" class="sidebar">
+        <a href="dashboard.html" class="sidebar-link">Tableau de bord</a>
+        <a href="https://wa.me/243822506535" class="sidebar-link">Discuter avec le berger Christian Mpiana</a>
+        <a href="https://wa.me/243980000118" class="sidebar-link">Discuter avec le berger Michée Dachel</a>
+    </div>
+
+    <div class="container">
+        <div class="logo-container">
+            <img src="logo.png" alt="Logo de Mirec Kinshasa">
+        </div>
+        <h1>Mirec Kinshasa</h1>
+        <p class="description">
+            Ministère international de la reconstitution évangélique par le Christ
+        </p>
+        <a href="dashboard.html" class="start-button">Commencer</a>
     </div>
 
     <footer>
-        <p>by Altesse 🪪</p>
+        <p>by Son Altesse</p>
     </footer>
-
-    <script src="script.js"></script>
-
+    
+    <script>
+        // Code pour le menu hamburger
+        document.getElementById('hamburger').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('active');
+            this.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
