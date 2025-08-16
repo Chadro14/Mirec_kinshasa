@@ -257,3 +257,10 @@ footer {
 }
 
         
+.logo-container img {
+    max-width: 200px;
+    height: auto;
+    border-radius: 50%; /* Image ronde */
+    box-shadow: 0 3px 10px rgba(218, 165, 32, 0.4);
+    transition: transform 0.5s ease-in-out;
+}
