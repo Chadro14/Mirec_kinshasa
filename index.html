@@ -9,21 +9,11 @@
 </head>
 <body>
 
-    <div id="hamburger" class="hamburger-menu">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-    </div>
-
-    <div id="sidebar" class="sidebar">
-        <a href="dashboard.html" class="sidebar-link">Tableau de bord</a>
-        <a href="https://wa.me/243822506535" class="sidebar-link">Discuter avec le berger Christian Mpiana</a>
-        <a href="https://wa.me/243980000118" class="sidebar-link">Discuter avec le berger Michée Dachel</a>
-    </div>
-
-    <div class="container">
+    <div class="container loaded">
         <div class="logo-container">
-            <img src="logo.png" alt="Logo de Mirec Kinshasa">
+            <a href="index.html">
+                <img src="logo.png" alt="Logo de Mirec Kinshasa">
+            </a>
         </div>
         <h1>Mirec Kinshasa</h1>
         <p class="description">
@@ -33,15 +23,8 @@
     </div>
 
     <footer>
-        <p>by Son Altesse</p>
+        <p>by Son Altesse👩🏽‍💻</p>
     </footer>
-    
-    <script>
-        // Code pour le menu hamburger
-        document.getElementById('hamburger').addEventListener('click', function() {
-            document.getElementById('sidebar').classList.toggle('active');
-            this.classList.toggle('active');
-        });
-    </script>
+
 </body>
 </html>
