@@ -72,7 +72,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Récupère la prédication sauvegardée dans le navigateur
             const savedSermon = localStorage.getItem('sermon');
             if (savedSermon) {
                 const sermon = JSON.parse(savedSermon);
