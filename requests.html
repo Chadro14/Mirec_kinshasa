@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Envoyer une Requête</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #64CCC5, #176B87);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            max-width: 80%;
+            margin: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        label {
+            font-size: 1.2em;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #176B87;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+        
+        input[type="submit"] {
+            display: inline-block;
+            background-color: #fff;
+            color: #176B87;
+            padding: 15px 40px;
+            border-radius: 8px;
+            border: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #64CCC5;
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        .back-button {
+            display: inline-block;
+            background-color: #fff;
+            color: #176B87;
+            padding: 10px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+            margin-top: 20px;
+        }
+
+        .back-button:hover {
+            background-color: #eee;
+            transform: scale(1.05);
+        }
+
+        #confirmationMessage {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #fff;
+            display: none;
+            animation: fadeIn 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Envoyez vos requêtes de prière</h1>
+        <p>Nous nous tenons en accord avec vous pour votre requête.</p>
+        <form id="requestForm">
+            <label for="name">Votre nom (facultatif)</label>
+            <input type="text" id="name" name="name">
+
+            <label for="request">Votre requête</label>
+            <textarea id="request" name="request" required></textarea>
+
+            <input type="submit" value="Envoyer">
+        </form>
+        <p id="confirmationMessage">Votre requête a été envoyée. Que Dieu vous bénisse !</p>
+    </div>
+
+    <a href="dashboard.html" class="back-button">Retour au tableau de bord</a>
+
+    <script>
+        document.getElementById('requestForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            document.getElementById('requestForm').style.display = 'none';
+            document.getElementById('confirmationMessage').style.display = 'block';
+        });
+    </script>
+
+</body>
+</html>
