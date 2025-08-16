@@ -1,8 +1,8 @@
 /* Styles généraux du corps de la page */
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #176B87, #64CCC5); /* Thème bleu-vert foncé et clair */
-    color: #FFD700; /* Texte en doré */
+    background-color: #000000; /* Fond noir pur */
+    color: #FFD700; /* Texte principal en doré */
     margin: 0;
     padding: 0;
     display: flex;
@@ -16,16 +16,16 @@ body {
 
 /* Styles du conteneur principal */
 .container {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(0, 0, 0, 0.8);
     border-radius: 10px;
     padding: 40px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 5px 20px rgba(255, 215, 0, 0.2);
     backdrop-filter: blur(15px);
     max-width: 80%;
     margin: 20px;
     opacity: 0;
     transition: opacity 1s ease-in-out, transform 0.5s ease;
-    border: 1px solid rgba(255, 215, 0, 0.5);
+    border: 1px solid #FFD700; /* Bordure dorée */
 }
 
 .container.loaded {
@@ -36,7 +36,7 @@ body {
 h1 {
     font-size: 2.5em;
     margin-bottom: 20px;
-    color: #fff; /* Titre en blanc pour contraster */
+    color: #FFD700; /* Titre en doré */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
@@ -64,8 +64,8 @@ h1 {
 /* Style des boutons et liens */
 .start-button, .back-button, .nav-button {
     display: inline-block;
-    background: #FFD700; /* Fond doré */
-    color: #176B87; /* Texte bleu-vert */
+    background: #1a1a1a;
+    color: #FFD700;
     padding: 15px 40px;
     border-radius: 5px;
     text-decoration: none;
@@ -73,14 +73,14 @@ h1 {
     font-size: 1.1em;
     transition: background-color 0.3s ease, transform 0.2s ease-in-out, box-shadow 0.3s ease;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    border: 1px solid #FFD700;
+    border: 1px solid #FFD700; /* Bordure dorée */
     letter-spacing: 1px;
 }
 
 .start-button:hover, .back-button:hover, .nav-button:hover {
-    background: #F0E68C; /* Jaune pâle au survol */
+    background: #333;
     transform: translateY(-3px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 8px 15px rgba(255, 215, 0, 0.3);
 }
 
 .logo-container {
@@ -91,7 +91,7 @@ h1 {
     max-width: 200px;
     height: auto;
     border-radius: 50%;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 3px 10px rgba(255, 215, 0, 0.4);
     transition: transform 0.5s ease-in-out;
 }
 
@@ -107,7 +107,7 @@ h1 {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(23, 107, 135, 0.95);
+    background-color: rgba(0, 0, 0, 0.95);
     z-index: 1000;
     flex-direction: column;
     align-items: center;
@@ -123,7 +123,7 @@ h1 {
 }
 
 .loading-spinner {
-    border: 8px solid #64CCC5;
+    border: 8px solid #333;
     border-top: 8px solid #FFD700;
     border-radius: 50%;
     width: 60px;
@@ -159,19 +159,19 @@ footer {
     z-index: 10;
     cursor: pointer;
     padding: 10px;
-    background: rgba(255, 215, 0, 0.2);
+    background: rgba(255, 215, 0, 0.1);
     border-radius: 5px;
     transition: background 0.3s ease;
 }
 
 .hamburger-menu:hover {
-    background: rgba(255, 215, 0, 0.4);
+    background: rgba(255, 215, 0, 0.2);
 }
 
 .hamburger-menu .bar {
     width: 25px;
     height: 3px;
-    background-color: #176B87;
+    background-color: #FFD700;
     margin: 5px 0;
     transition: 0.4s;
 }
@@ -195,12 +195,12 @@ footer {
     z-index: 5;
     top: 0;
     left: 0;
-    background-color: rgba(23, 107, 135, 0.9);
+    background-color: rgba(0, 0, 0, 0.9);
     backdrop-filter: blur(5px);
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
-    box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+    box-shadow: 2px 0 10px rgba(255, 215, 0, 0.5);
     display: flex;
     flex-direction: column;
 }
@@ -222,7 +222,7 @@ footer {
 }
 
 .nav-button:hover {
-    background-color: rgba(255, 215, 0, 0.1);
+    background-color: #111;
 }
 
 .nav-button .button-icon {
