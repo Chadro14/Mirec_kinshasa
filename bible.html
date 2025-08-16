@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verset du Jour</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #176B87, #64CCC5);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        .verse-container {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            max-width: 80%;
+            margin: 20px;
+        }
+
+        .verse {
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            font-size: 1.5em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .reference {
+            font-size: 1em;
+            font-weight: bold;
+        }
+
+        .back-button, .new-verse-button, .testament-button {
+            display: inline-block;
+            background-color: #fff;
+            color: #176B87;
+            padding: 10px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+            margin-top: 20px;
+        }
+        
+        .testament-button {
+            margin: 0 5px;
+        }
+
+        .back-button:hover, .new-verse-button:hover, .testament-button:hover {
+            background-color: #eee;
+            transform: scale(1.05);
+        }
+
+        .new-verse-button {
+            margin-left: 10px;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .verse-content {
+            display: none;
+        }
+
+        .buttons-container {
+            margin-bottom: 20px;
+        }
+        
+        footer {
+            position: fixed;
+            bottom: 10px;
+            font-size: 0.8em;
+            color: rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="verse-container">
+        <h1>Sélectionnez un Testament</h1>
+        <div class="buttons-container">
+            <button class="testament-button" id="ot-button">Ancien Testament</button>
+            <button class="testament-button" id="nt-button">Nouveau Testament</button>
+        </div>
+        
+        <div class="verse-content" id="verse-content">
+            <p class="verse" id="verse">Chargement...</p>
+            <p class="reference" id="reference"></p>
+            <button class="new-verse-button" id="newVerseButton">Nouveau verset</button>
+        </div>
+    </div>
+    
+    <footer>
+        <p>by Son Altesse</p>
+    </footer>
+
+    <a href="dashboard.html" class="back-button">Retour au tableau de bord</a>
+
+    <script>
+        let bibleData = null;
+        
+        function displayRandomVerse(data) {
+            const books = Object.keys(data);
+            const randomBookName = books[Math.floor(Math.random() * books.length)];
+            const randomBook = data[randomBookName];
+            
+            const randomChapterIndex = Math.floor(Math.random() * randomBook.length);
+            const randomChapter = randomBook[randomChapterIndex];
+            
+            const randomVerseIndex = Math.floor(Math.random() * randomChapter.length);
+            const verseText = randomChapter[randomVerseIndex];
+            
+            const reference = `${randomBookName} ${randomChapterIndex + 1}:${randomVerseIndex + 1}`;
+
+            document.getElementById('verse').textContent = `« ${verseText} »`;
+            document.getElementById('reference').textContent = reference;
+        }
+
+        function loadBibleData(filePath) {
+            document.getElementById('verse').textContent = 'Chargement des versets...';
+            document.getElementById('verse-content').style.display = 'block';
+            
+            fetch(filePath)
+                .then(response => response.json())
+                .then(data => {
+                    bibleData = data;
+                    displayRandomVerse(bibleData);
+                })
+                .catch(error => {
+                    console.error('Erreur de chargement de la Bible:', error);
+                    document.getElementById('verse').textContent = "Erreur de chargement. Veuillez vérifier les fichiers JSON.";
+                });
+        }
+
+        document.getElementById('ot-button').addEventListener('click', function() {
+            document.querySelector('.buttons-container').style.display = 'none';
+            loadBibleData('ot.json');
+        });
+
+        document.getElementById('nt-button').addEventListener('click', function() {
+            document.querySelector('.buttons-container').style.display = 'none';
+            loadBibleData('nt.json');
+        });
+
+        document.getElementById('newVerseButton').addEventListener('click', function() {
+            if (bibleData) {
+                displayRandomVerse(bibleData);
+            }
+        });
+    </script>
+</body>
+</html>
