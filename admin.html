@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Prédication</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #176B87, #64CCC5);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            max-width: 80%;
+            margin: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        label {
+            font-size: 1.2em;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #176B87;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        input[type="submit"] {
+            display: inline-block;
+            background-color: #fff;
+            color: #176B87;
+            padding: 15px 40px;
+            border-radius: 8px;
+            border: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #64CCC5;
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        #confirmationMessage, #accessDenied {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #fff;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="adminContent" style="display:none;">
+        <h1>Admin - Nouvelle Prédication</h1>
+        <form id="sermonForm">
+            <label for="title">Titre de la Prédication</label>
+            <input type="text" id="title" name="title" required>
+
+            <label for="content">Contenu de la Prédication</label>
+            <textarea id="content" name="content" required></textarea>
+
+            <input type="submit" value="Enregistrer">
+        </form>
+        <p id="confirmationMessage">Prédication enregistrée ! Vous pouvez maintenant la voir sur la page publique.</p>
+    </div>
+
+    <p id="accessDenied">Accès refusé. Le code est incorrect.</p>
+
+    <script>
+        const correctCode = '252006';
+        const userCode = prompt("Veuillez entrer le code d'accès :");
+
+        if (userCode === correctCode) {
+            document.getElementById('adminContent').style.display = 'block';
+        } else {
+            document.getElementById('accessDenied').style.display = 'block';
+        }
+
+        document.getElementById('sermonForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const title = document.getElementById('title').value;
+            const content = document.getElementById('content').value;
+            
+            const sermonData = {
+                title: title,
+                content: content
+            };
+            
+            localStorage.setItem('sermon', JSON.stringify(sermonData));
+            
+            document.getElementById('sermonForm').style.display = 'none';
+            document.getElementById('confirmationMessage').style.display = 'block';
+        });
+    </script>
+
+</body>
+</html>
