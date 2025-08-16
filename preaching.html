@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prédication</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #176B87, #64CCC5);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            max-width: 80%;
+            margin: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .preaching-content {
+            text-align: left;
+            line-height: 1.6;
+        }
+
+        .back-button {
+            display: inline-block;
+            background-color: #fff;
+            color: #176B87;
+            padding: 10px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+            margin-top: 20px;
+        }
+
+        .back-button:hover {
+            background-color: #eee;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 id="sermonTitle">Prédication</h1>
+        <div class="preaching-content" id="sermonContent">
+            <p>Aucune prédication n'est disponible pour le moment. Veuillez patienter.</p>
+        </div>
+    </div>
+
+    <a href="dashboard.html" class="back-button">Retour au tableau de bord</a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Récupère la prédication sauvegardée dans le navigateur
+            const savedSermon = localStorage.getItem('sermon');
+            if (savedSermon) {
+                const sermon = JSON.parse(savedSermon);
+                document.getElementById('sermonTitle').textContent = sermon.title;
+                document.getElementById('sermonContent').innerHTML = `<p>${sermon.content.replace(/\n/g, '<br>')}</p>`;
+            }
+        });
+    </script>
+
+</body>
+</html>
