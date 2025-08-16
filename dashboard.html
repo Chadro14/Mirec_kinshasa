@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services Mirec</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="hamburgerMenu" class="hamburger-menu">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+
+    <nav id="sidebar" class="sidebar">
+        <a href="bible.html" class="nav-button">
+            <span class="button-icon">📖</span>
+            <span>Bouton Bible</span>
+        </a>
+        <a href="#" class="nav-button">
+            <span class="button-icon">🧘‍♂️</span>
+            <span>Méditation</span>
+        </a>
+        <a href="#" class="nav-button">
+            <span class="button-icon">✍️</span>
+            <span>Citation Chrétienne</span>
+        </a>
+        <a href="#" class="nav-button">
+            <span class="button-icon">😊</span>
+            <span>Comment vous sentez-vous aujourd'hui ?</span>
+        </a>
+        <a href="preaching.html" class="nav-button">
+            <span class="button-icon">🗣️</span>
+            <span>Prédication</span>
+        </a>
+        <a href="requests.html" class="nav-button">
+            <span class="button-icon">🙏</span>
+            <span>Envoyez vos requêtes</span>
+        </a>
+        <a href="admin.html" class="nav-button">
+            <span class="button-icon">🛠️</span>
+            <span>Admin</span>
+        </a>
+    </nav>
+    
+    <div class="container main-content">
+        <h1>Bienvenue, que la grâce soit avec vous !</h1>
+    </div>
+
+    <script>
+        const hamburgerMenu = document.getElementById('hamburgerMenu');
+        const sidebar = document.getElementById('sidebar');
+
+        hamburgerMenu.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            hamburgerMenu.classList.toggle('active');
+        });
+    </script>
+
+</body>
+</html>
