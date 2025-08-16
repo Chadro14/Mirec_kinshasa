@@ -3,96 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tableau de bord - Mirec</title>
+    <title>Mirec Kinshasa</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-    <div id="hamburger" class="hamburger-menu">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-    </div>
 
-    <div id="sidebar" class="sidebar">
-        <a href="index.html" class="sidebar-link">Retour à la page d'accueil</a>
-        <a href="https://wa.me/243822506535" class="sidebar-link">Discuter avec le berger Christian Mpiana</a>
-        <a href="https://wa.me/243980000118" class="sidebar-link">Discuter avec le berger Michée Dachel</a>
-    </div>
-
-    <div class="main-content">
-        <div class="container loaded">
-            <div class="logo-container">
-                <a href="index.html">
-                    <img src="logo.png" alt="Logo de Mirec Kinshasa">
-                </a>
-            </div>
-            <h1>Tableau de bord</h1>
-            <p id="citation" class="description"></p>
-            
-            <div class="button-section">
-                <a href="predication.html" class="dashboard-button">🗣️ Prédication</a>
-                <a href="meditation.html" class="dashboard-button">🧘 Méditation</a>
-                <a href="verse.html" class="dashboard-button">📖 Versé du jour</a>
-                <a href="bible.html" class="dashboard-button">✝️ Bible</a>
-            </div>
-
-            <div class="mood-section">
-                <a href="#" id="toggleMoodButton" class="dashboard-button">Comment vous sentez-vous ?</a>
-                
-                <div id="moodContent" class="mood-content-hidden">
-                    <div class="mood-options">
-                        <div class="mood-item">😊 Joyeux</div>
-                        <div class="mood-item">😐 Neutre</div>
-                        <div class="mood-item">😔 Triste</div>
-                    </div>
-                </div>
-            </div>
-
-            <br>
-            <a href="index.html" class="start-button">Retour à la page d'accueil</a>
+    <div class="container loaded">
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="logo.png" alt="Logo de Mirec Kinshasa">
+            </a>
         </div>
+        <h1>Mirec Kinshasa</h1>
+        <p class="description">
+            Ministère international de la réconciliation évangélique par le Christ
+        </p>
+        <a href="dashboard.html" class="start-button">Commencer</a>
     </div>
 
     <footer>
         <p>by Son Altesse</p>
     </footer>
 
-    <script>
-        // Citations qui changent
-        const citations = [
-            "Le véritable amour est un choix, pas seulement un sentiment.",
-            "La foi n'est pas l'absence de doute, c'est le courage d'y faire face.",
-            "Soyez le changement que vous voulez voir dans le monde.",
-            "Chaque pas dans la foi est un pas de plus vers la bénédiction.",
-            "La persévérance est la clé de la réussite dans toutes les épreuves."
-        ];
-
-        const citationElement = document.getElementById('citation');
-        let index = 0;
-
-        function afficherCitation() {
-            citationElement.textContent = citations[index];
-            index = (index + 1) % citations.length;
-        }
-
-        afficherCitation();
-        setInterval(afficherCitation, 5000);
-
-        // Code pour le menu hamburger
-        document.getElementById('hamburger').addEventListener('click', function() {
-            document.getElementById('sidebar').classList.toggle('active');
-            this.classList.toggle('active');
-        });
-
-        // Code pour le bouton "Comment vous sentez-vous ?"
-        document.getElementById('toggleMoodButton').addEventListener('click', function(event) {
-            event.preventDefault();
-            const moodContent = document.getElementById('moodContent');
-            moodContent.classList.toggle('mood-content-hidden');
-            moodContent.classList.toggle('mood-content-visible');
-        });
-    </script>
 </body>
 </html>
-    
