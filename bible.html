@@ -3,162 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verset du Jour</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #176B87, #64CCC5);
-            color: #fff;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-
-        .verse-container {
-            background-color: rgba(255, 255, 255, 0.15);
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            max-width: 80%;
-            margin: 20px;
-        }
-
-        .verse {
-            font-family: 'Georgia', serif;
-            font-style: italic;
-            font-size: 1.5em;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-        }
-
-        .reference {
-            font-size: 1em;
-            font-weight: bold;
-        }
-
-        .back-button, .new-verse-button, .testament-button {
-            display: inline-block;
-            background-color: #fff;
-            color: #176B87;
-            padding: 10px 25px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s ease, transform 0.2s ease-in-out;
-            margin-top: 20px;
-        }
-        
-        .testament-button {
-            margin: 0 5px;
-        }
-
-        .back-button:hover, .new-verse-button:hover, .testament-button:hover {
-            background-color: #eee;
-            transform: scale(1.05);
-        }
-
-        .new-verse-button {
-            margin-left: 10px;
-            cursor: pointer;
-            border: none;
-        }
-        
-        .verse-content {
-            display: none;
-        }
-
-        .buttons-container {
-            margin-bottom: 20px;
-        }
-        
-        footer {
-            position: fixed;
-            bottom: 10px;
-            font-size: 0.8em;
-            color: rgba(255, 255, 255, 0.5);
-        }
-    </style>
+    <title>La Sainte Bible - MIREC</title>
+    <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
+    <header>
+        <nav>
+            <a href="dashbord.html">← Retour au Tableau de Bord</a>
+        </nav>
+        <h1>La Sainte Bible (Louis Segond)</h1>
+    </header>
 
-    <div class="verse-container">
-        <h1>Sélectionnez un Testament</h1>
-        <div class="buttons-container">
-            <button class="testament-button" id="ot-button">Ancien Testament</button>
-            <button class="testament-button" id="nt-button">Nouveau Testament</button>
-        </div>
+    <main>
         
-        <div class="verse-content" id="verse-content">
-            <p class="verse" id="verse">Chargement...</p>
-            <p class="reference" id="reference"></p>
-            <button class="new-verse-button" id="newVerseButton">Nouveau verset</button>
-        </div>
-    </div>
-    
-    <footer>
-        <p>by Son Altesse</p>
-    </footer>
+        <section id="bible-text-display">
+            <h2>Verset du Jour (Jean 3:16)</h2>
+            <div id="bible-content">
+                <p>Chargement du Verset...</p>
+            </div>
+            <p>
+                <small>Traduction: Louis Segond (1910) - API: bible-api.com</small>
+            </p>
+        </section>
 
-    <a href="dashboard.html" class="back-button">Retour au tableau de bord</a>
-
-    <script>
-        let bibleData = null;
+        <section id="bible-search">
+            <h2>Rechercher un autre Verset</h2>
+            <p>
+                <small>Exemples de recherche : Jean 1:1, Genèse 1:26, Psaumes 23</small>
+            </p>
+            <input type="text" id="searchInput" placeholder="Entrez la référence (ex: Jean 3:16)">
+            <button onclick="fetchBibleVerse()">Rechercher</button>
+            
+            <div id="search-result"></div>
+        </section>
         
-        function displayRandomVerse(data) {
-            const books = Object.keys(data);
-            const randomBookName = books[Math.floor(Math.random() * books.length)];
-            const randomBook = data[randomBookName];
-            
-            const randomChapterIndex = Math.floor(Math.random() * randomBook.length);
-            const randomChapter = randomBook[randomChapterIndex];
-            
-            const randomVerseIndex = Math.floor(Math.random() * randomChapter.length);
-            const verseText = randomChapter[randomVerseIndex];
-            
-            const reference = `${randomBookName} ${randomChapterIndex + 1}:${randomVerseIndex + 1}`;
+        <script>
+            // Fonction principale pour interroger l'API
+            function fetchBibleVerse(reference = 'Jean 3:16') {
+                const translation = 'lsg'; // Louis Segond (français)
+                const apiUrl = `https://bible-api.com/${encodeURIComponent(reference)}?translation=${translation}`;
+                
+                const outputElement = (reference === 'Jean 3:16') ? 
+                                       document.getElementById('bible-content') : 
+                                       document.getElementById('search-result');
 
-            document.getElementById('verse').textContent = `« ${verseText} »`;
-            document.getElementById('reference').textContent = reference;
-        }
+                outputElement.innerHTML = `<p>Chargement de ${reference}...</p>`;
 
-        function loadBibleData(filePath) {
-            document.getElementById('verse').textContent = 'Chargement des versets...';
-            document.getElementById('verse-content').style.display = 'block';
-            
-            fetch(filePath)
-                .then(response => response.json())
-                .then(data => {
-                    bibleData = data;
-                    displayRandomVerse(bibleData);
-                })
-                .catch(error => {
-                    console.error('Erreur de chargement de la Bible:', error);
-                    document.getElementById('verse').textContent = "Erreur de chargement. Veuillez vérifier les fichiers JSON.";
-                });
-        }
-
-        document.getElementById('ot-button').addEventListener('click', function() {
-            document.querySelector('.buttons-container').style.display = 'none';
-            loadBibleData('ot.json');
-        });
-
-        document.getElementById('nt-button').addEventListener('click', function() {
-            document.querySelector('.buttons-container').style.display = 'none';
-            loadBibleData('nt.json');
-        });
-
-        document.getElementById('newVerseButton').addEventListener('click', function() {
-            if (bibleData) {
-                displayRandomVerse(bibleData);
+                fetch(apiUrl)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Référence non trouvée ou erreur réseau.');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        // Construire le texte à partir des versets reçus
+                        let text = '';
+                        if (data.verses && data.verses.length > 0) {
+                            text = data.verses.map(v => `<strong>${v.verse}</strong> ${v.text}`).join(' ');
+                            
+                            outputElement.innerHTML = `
+                                <h3>${data.reference}</h3>
+                                <p>${text}</p>
+                            `;
+                        } else {
+                            // Cas où la référence n'est pas valide mais la requête est OK (souvent un tableau vide)
+                            outputElement.innerHTML = `<p>Désolé, la référence "${reference}" n'a pas pu être trouvée dans la version LSG.</p>`;
+                        }
+                    })
+                    .catch(error => {
+                        // Afficher l'erreur dans la zone de contenu
+                        outputElement.innerHTML = `<p>Erreur: ${error.message}. Veuillez vérifier la référence.</p>`;
+                        console.error('Erreur API:', error);
+                    });
             }
-        });
-    </script>
+
+            // Fonction appelée par le bouton de recherche
+            function fetchBibleVerseFromInput() {
+                const input = document.getElementById('searchInput').value.trim();
+                if (input) {
+                    fetchBibleVerse(input);
+                } else {
+                    document.getElementById('search-result').innerHTML = `<p>Veuillez entrer une référence biblique valide.</p>`;
+                }
+            }
+            
+            // Lancer le chargement du verset par défaut au chargement de la page
+            window.onload = function() {
+                fetchBibleVerse();
+                
+                // Lie la touche "Entrée" à la recherche pour améliorer l'expérience
+                document.getElementById('searchInput').addEventListener('keyup', function(event) {
+                    if (event.key === 'Enter') {
+                        fetchBibleVerseFromInput();
+                    }
+                });
+            };
+        </script>
+    </main>
+
+    <footer>
+        <p>Source Bible via API externe. Développé par Son Altesse.</p>
+    </footer>
 </body>
 </html>
