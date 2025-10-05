@@ -4,113 +4,143 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tableau de bord - Mirec</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"> 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <script src="https://unpkg.com/react/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
-    <div id="hamburger" class="hamburger-menu">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
+    <div id="dashboard-root">
+        <p>Chargement du tableau de bord...</p>
     </div>
 
-    <div id="sidebar" class="sidebar">
-        <a href="index.html" class="sidebar-link">Retour à la page d'accueil</a>
-        <a href="https://wa.me/243822506535" class="sidebar-link">Discuter avec le berger Christian Mpiana</a>
-        <a href="https://wa.me/243980000118" class="sidebar-link">Discuter avec le berger Michée Dachel</a>
-    </div>
+    <script type="text/babel">
+        const { useState, useEffect } = React;
 
-    <div class="main-content">
-        <div class="container loaded">
-            <div class="logo-container">
-                <a href="index.html">
-                    <img src="https://files.catbox.moe/f1dpzj.jpg" alt="Logo de Mirec Kinshasa">
-                </a>
-            </div>
+        // --- COMPOSANTS REACT (LOGIQUE) ---
+
+        const CitationDisplay = () => {
+            // Logique de citation (comme précédemment)
+            const citations = [
+                "Le véritable amour est un choix, pas seulement un sentiment.",
+                "La foi n'est pas l'absence de doute, c'est le courage d'y faire face.",
+                "Soyez le changement que vous voulez voir dans le monde.",
+                "Chaque pas dans la foi est un pas de plus vers la bénédiction.",
+                "La persévérance est la clé de la réussite dans toutes les épreuves."
+            ];
+            const [citation, setCitation] = useState(citations[0]);
+
+            useEffect(() => {
+                const intervalId = setInterval(() => {
+                    setCitation(prevCitation => {
+                        const currentIndex = citations.indexOf(prevCitation);
+                        const nextIndex = (currentIndex + 1) % citations.length;
+                        return citations[nextIndex];
+                    });
+                }, 5000);
+
+                return () => clearInterval(intervalId);
+            }, []); 
+
+            return (
+                <p id="citation" className="description">{citation}</p>
+            );
+        };
+
+        const DashboardApp = () => {
+            const [isSidebarActive, setIsSidebarActive] = useState(false);
+            const [isMoodVisible, setIsMoodVisible] = useState(false);
             
-            <h1>Tableau de bord</h1>
-            <p id="citation" class="description"></p>
-            
-            
-            <section class="button-section">
-                <a href="predication.html" class="dashboard-button">🗣️ Prédication</a>
-                <a href="meditation.html" class="dashboard-button">🧘 Méditation</a>
-                <a href="verse.html" class="dashboard-button">📖 Verset du jour</a>
-                
-                <a href="horaires.html" class="dashboard-button">⏰ Horaires & Dates</a>
-                <a href="requete-priere.html" class="dashboard-button">🙏 Requête de Prière</a>
-                <a href="bible-api.html" class="dashboard-button">✝️ Bible </a>
-                <a href="medias.html" class="dashboard-button">🖼️ Média & Partage</a>
-                <a href="theme-du-mois.html" class="dashboard-button">🔥 Thème du Mois</a>
-                
-                <a href="#" id="adminButton" class="dashboard-button">⚙️ Admin</a>
-            </section>
-            <section class="mood-section">
-                <a href="#" id="toggleMoodButton" class="dashboard-button">Comment vous sentez-vous ?</a>
-                
-                <div id="moodContent" class="mood-content-hidden">
-                    <div class="mood-options">
-                        <div class="mood-item">😊 Joyeux</div>
-                        <div class="mood-item">😐 Neutre</div>
-                        <div class="mood-item">😔 Triste</div>
+            // Logique du bouton Admin
+            const handleAdminClick = (event) => {
+                event.preventDefault();
+                const code = prompt("Veuillez entrer le code d'accès :");
+                if (code === "252006") {
+                    window.location.href = "admin.html";
+                } else {
+                    alert("Code incorrect.");
+                }
+            };
+
+            return (
+                <React.Fragment>
+                    {/* Menu Hamburger */}
+                    <div 
+                        id="hamburger" 
+                        className={`hamburger-menu ${isSidebarActive ? 'active' : ''}`}
+                        onClick={() => setIsSidebarActive(!isSidebarActive)}
+                    >
+                        <div className="bar"></div>
+                        <div className="bar"></div>
+                        <div className="bar"></div>
                     </div>
-                </div>
-            </section>
 
-            <br>
-            <a href="index.html" class="start-button">Retour à la page d'accueil</a>
-        </div>
-    </div>
+                    {/* Barre Latérale */}
+                    <div id="sidebar" className={`sidebar ${isSidebarActive ? 'active' : ''}`}>
+                        <a href="index.html" className="sidebar-link">Retour à la page d'accueil</a>
+                        <a href="https://wa.me/243822506535" className="sidebar-link">Discuter avec le berger Christian Mpiana</a>
+                        {/* ... autres liens ... */}
+                    </div>
 
-    <footer>
-        <p>by Son Altesse</p>
-    </footer>
+                    <div className="main-content">
+                        <div className="container loaded">
+                            <div className="logo-container">
+                                <a href="index.html">
+                                    <img src="https://files.catbox.moe/f1dpzj.jpg" alt="Logo de Mirec Kinshasa" />
+                                </a>
+                            </div>
+                            <h1>Tableau de bord</h1>
+                            
+                            <CitationDisplay />
+                            
+                            {/* SECTION DES BOUTONS */}
+                            <div className="button-section">
+                                <a href="predication.html" className="dashboard-button">🗣️ Prédication</a>
+                                <a href="meditation.html" className="dashboard-button">🧘 Méditation</a>
+                                <a href="verse.html" className="dashboard-button">📖 Verset du jour</a>
+                                <a href="bible.html" className="dashboard-button">✝️ Bible</a>
+                                
+                                {/* Nouveaux boutons */}
+                                <a href="horaires.html" className="dashboard-button">⏰ Horaires & Dates</a>
+                                <a href="requete-priere.html" className="dashboard-button">🙏 Requête de Prière</a>
+                                <a href="medias.html" className="dashboard-button">🖼️ Média & Partage</a>
+                                <a href="theme-du-mois.html" className="dashboard-button">🔥 Thème du Mois</a>
+                                
+                                <a href="#" onClick={handleAdminClick} className="dashboard-button">⚙️ Admin</a>
+                            </div>
+                            
+                            {/* SECTION HUMEUR */}
+                            <div className="mood-section">
+                                <a href="#" onClick={(e) => {e.preventDefault(); setIsMoodVisible(!isMoodVisible);}} className="dashboard-button">
+                                    Comment vous sentez-vous ?
+                                </a>
+                                
+                                <div id="moodContent" className={isMoodVisible ? 'mood-content-visible' : 'mood-content-hidden'}>
+                                    <div className="mood-options">
+                                        <div className="mood-item">😊 Joyeux</div>
+                                        <div className="mood-item">😐 Neutre</div>
+                                        <div className="mood-item">😔 Triste</div>
+                                    </div>
+                                </div>
+                            </div>
 
-    <script>
-        // Citations qui changent
-        const citations = [
-            "Le véritable amour est un choix, pas seulement un sentiment.",
-            "La foi n'est pas l'absence de doute, c'est le courage d'y faire face.",
-            "Soyez le changement que vous voulez voir dans le monde.",
-            "Chaque pas dans la foi est un pas de plus vers la bénédiction.",
-            "La persévérance est la clé de la réussite dans toutes les épreuves."
-        ];
+                            <br />
+                            <a href="index.html" className="start-button">Retour à la page d'accueil</a>
+                        </div>
+                    </div>
 
-        const citationElement = document.getElementById('citation');
-        let index = 0;
+                    <footer>
+                        <p>by Son Altesse</p>
+                    </footer>
+                </React.Fragment>
+            );
+        };
 
-        function afficherCitation() {
-            citationElement.textContent = citations[index];
-            index = (index + 1) % citations.length;
-        }
-
-        afficherCitation();
-        setInterval(afficherCitation, 5000);
-
-        // Code pour le menu hamburger
-        document.getElementById('hamburger').addEventListener('click', function() {
-            document.getElementById('sidebar').classList.toggle('active');
-            this.classList.toggle('active');
-        });
-
-        // Code pour le bouton "Comment vous sentez-vous ?"
-        document.getElementById('toggleMoodButton').addEventListener('click', function(event) {
-            event.preventDefault();
-            const moodContent = document.getElementById('moodContent');
-            moodContent.classList.toggle('mood-content-hidden');
-            moodContent.classList.toggle('mood-content-visible');
-        });
-
-        // Code pour le bouton Admin
-        document.getElementById('adminButton').addEventListener('click', function(event) {
-            event.preventDefault();
-            const code = prompt("Veuillez entrer le code d'accès :");
-            if (code === "252006") {
-                window.location.href = "admin.html";
-            } else {
-                alert("Code incorrect.");
-            }
-        });
+        // Rendu du composant principal dans le conteneur 'dashboard-root'
+        const root = ReactDOM.createRoot(document.getElementById('dashboard-root'));
+        root.render(<DashboardApp />);
     </script>
 </body>
 </html>
